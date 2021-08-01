@@ -12,11 +12,11 @@ namespace Paint
         struct Pixel
         {
             int x,
-            iny y,
+            int y,
             u8 r,
             u8 g,
             u8 b
         };
-        std::vector<Pixel> buard;
+        std::vector<Pixel> board;
     };
 }
