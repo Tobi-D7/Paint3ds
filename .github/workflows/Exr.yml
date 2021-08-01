@@ -36,7 +36,7 @@ jobs:
           git clone https://github.com/NPI-D7/RenderD7.git
           cd Paint3ds
           mkdir -p extlibs/
-          rm -r extlibs/RenderD7
+          #rm -r extlibs/RenderD7
           mkdir -p extlibs/RenderD7/
           cp -r ../RenderD7/* extlibs/RenderD7/
           #cp -r ../RenderD7/*.h* extlibs/RenderD7/
