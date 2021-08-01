@@ -10,7 +10,7 @@ int main()
     while(RenderD7::MainLoop())
     {
         RenderD7::OnScreen(Top);
-        
+        board.Draw();
         C3D_FrameEnd(0);
     }
     RenderD7::Exit::Main();
