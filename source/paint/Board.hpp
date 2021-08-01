@@ -16,7 +16,9 @@ namespace Paint
         public:
         Board(int w, int h, bool centered = true);
         ~Board();
+        void Draw();
         private:
+        bool ce = true;
         std::vector<Pixel> board;
     };
 }
