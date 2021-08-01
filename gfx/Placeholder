@@ -1,5 +1,5 @@
 
-name: Build BCSTM-Player🎵
+name: Build Paint3ds
 
 on:
   push:
@@ -45,8 +45,8 @@ jobs:
         run: |
           make
           mkdir -p ~/artifacts
-          cp BCSTM-Player.3dsx ~/artifacts
-          cp BCSTM-Player.cia ~/artifacts
+          cp Paint3ds.3dsx ~/artifacts
+          cp Paint3ds.cia ~/artifacts
           echo ::set-output name=commit_tag::$(git describe --abbrev=0 --tags)
           echo ::set-output name=commit_hash::$(git log --format=%h -1)
           # Webhook info
@@ -106,16 +106,16 @@ jobs:
           cd nightlys
           sudo chmod +x nightlytool
           echo running
-          ./nightlytool management/BCSTM-Player.ini BCSTM-Player NPI-D7 nightlys v$CURRENT_DATE $COMMIT_HASH "\\$COMMIT_SUBJECT\\$COMMIT_MESSAGE\\\\" 0 "$AUTHOR_NAME"
+          ./nightlytool management/Paint3ds.ini Paint3ds NPI-D7 nightlys v$CURRENT_DATE $COMMIT_HASH "\\$COMMIT_SUBJECT\\$COMMIT_MESSAGE\\\\" 0 "$AUTHOR_NAME"
           echo creating dirs
           ls -R
-          mkdir -p builds/BCSTM-Player/
-          cd builds/BCSTM-Player/
-          qrencode -o BCSTM-Player.png https://github.com/NPI-D7/nightlys/raw/v$CURRENT_DATE/builds/BCSTM-Player/BCSTM-Player.cia
-          qrencode -o BCSTM-Player-release.png https://github.com/NPI-D7/nightlys/releases/download/$COMMIT_TAG/BCSTM-Player.cia
+          mkdir -p builds/Paint3ds/
+          cd builds/Paint3ds/
+          qrencode -o Paint3ds.png https://github.com/NPI-D7/nightlys/raw/v$CURRENT_DATE/builds/BCSTM-Player/Paint3ds.cia
+          qrencode -o Paint3ds-release.png https://github.com/NPI-D7/nightlys/releases/download/$COMMIT_TAG/Paint3ds.cia
           cp ${{ github.workspace }}/build/* .
           git stage .
-          git commit -m "BCSTM-Player | $COMMIT_HASH"
+          git commit -m "Paint3ds | $COMMIT_HASH"
           git tag v$CURRENT_DATE
           git push origin master v$CURRENT_DATE
       - name: Release to idk
@@ -124,7 +124,7 @@ jobs:
           AUTH_HEADER="Authorization: token ${{ secrets.TOKEN }}"
           CONTENT_TYPE="Content-Type: application/json"
           API_URL="https://api.github.com/repos/NPI-D7/nightlys/releases"
-          RELEASE_INFO="{\"tag_name\": \"v${{ steps.commit.outputs.current_date }}\", \"name\": \"BCSTM-Player | $COMMIT_HASH\", \"body\": \"$AUTHOR_NAME - $COMMIT_SUBJECT\\n\\n$COMMIT_MESSAGE\", \"prerelease\": true}"
+          RELEASE_INFO="{\"tag_name\": \"v${{ steps.commit.outputs.current_date }}\", \"name\": \"Paint3ds | $COMMIT_HASH\", \"body\": \"$AUTHOR_NAME - $COMMIT_SUBJECT\\n\\n$COMMIT_MESSAGE\", \"prerelease\": true}"
           RESPONSE=$(curl -XPOST -H "$AUTH_HEADER" -H "$CONTENT_TYPE" "$API_URL" -d "$RELEASE_INFO")
           ID=$(echo $RESPONSE | jq --raw-output '.id')
           for file in ${{ github.workspace }}/build/*; do
