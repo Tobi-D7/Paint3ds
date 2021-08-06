@@ -5,10 +5,13 @@
 int main()
 {
     RenderD7::Init::Main();
-    Paint::Board board(100, 100);
+    Paint::Board board(48, 48);
     
     while(RenderD7::MainLoop())
     {
+        touchPodition t;
+        hidTouchRead(&t);
+        board.DrawDot(t.px, t.py);
         RenderD7::OnScreen(Top);
         board.Draw();
         C3D_FrameEnd(0);
