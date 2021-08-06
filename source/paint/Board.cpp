@@ -18,7 +18,7 @@ Paint::Board::~Board(){}
 
 void Paint::Board::Draw()
 {
-    for (int i = 0; i < this->board.size(); i++)
+    for (int i = 0; i < (int)this->board.size(); i++)
     {
         RenderD7::DrawPx(this->board[i].x(), this->board[i].y(), C2D_Color32(this->board[i].r(), this->board[i].g(), this->board[i].b(), 255));
     }
