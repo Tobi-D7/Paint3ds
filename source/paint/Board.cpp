@@ -8,7 +8,7 @@ Paint::Board::Board(int w, int h, bool centered)
     {
         for (int y = 0; y < h; y++)
         {
-            px = {x, y, 255, 255, 255};
+            px = {x, y, x, y, y};
             this->board.push_back(px);
         }
     }
