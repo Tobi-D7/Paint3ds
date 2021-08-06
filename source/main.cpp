@@ -5,7 +5,7 @@
 int main()
 {
     RenderD7::Init::Main();
-    Paint::Board board(48, 48);
+    Paint::Board board(200, 200);
     
     while(RenderD7::MainLoop())
     {
