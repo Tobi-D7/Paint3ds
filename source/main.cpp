@@ -12,7 +12,7 @@ int main()
         touchPosition t;
         hidTouchRead(&t);
         board.DrawDot(t.px, t.py);
-        RenderD7::OnScreen(Top);
+        RenderD7::OnScreen(Bottom);
         board.Draw();
         C3D_FrameEnd(0);
     }
