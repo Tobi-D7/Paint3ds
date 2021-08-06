@@ -17,6 +17,7 @@ namespace Paint
         Board(int w, int h, bool centered = true);
         ~Board();
         void Draw();
+        DrawDot(int x, int y);
         private:
         bool ce = true;
         std::vector<Pixel> board;
