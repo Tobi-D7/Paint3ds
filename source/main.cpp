@@ -15,7 +15,7 @@ int main()
         RenderD7::OnScreen(Bottom);
         board.Draw();
         RenderD7::OnScreen(Top);
-        RenderD7::DrawText(0, 0, 0.7f, C2D_Color32(255, 255, 255, 255), RenderD7::GetFrameratte());
+        RenderD7::DrawText(0, 0, 0.7f, C2D_Color32(255, 255, 255, 255), RenderD7::GetFramerate());
         C3D_FrameEnd(0);
     }
     RenderD7::Exit::Main();
