@@ -23,3 +23,9 @@ void Paint::Board::Draw()
         RenderD7::DrawPx(this->board[i].x, this->board[i].y, C2D_Color32(this->board[i].r, this->board[i].g, this->board[i].b, 255));
     }
 }
+
+void Paint::Board::DrawDot(int x, int y)
+{
+	Paint::Pixel newpx = {x, y, 255, 255, 255};
+	this->board.push_back(newpx);
+}
