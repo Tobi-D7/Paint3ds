@@ -9,7 +9,7 @@ int main()
     
     while(RenderD7::MainLoop())
     {
-        touchPodition t;
+        touchPosition t;
         hidTouchRead(&t);
         board.DrawDot(t.px, t.py);
         RenderD7::OnScreen(Top);
