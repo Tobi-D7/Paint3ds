@@ -29,3 +29,11 @@ void Paint::Board::DrawDot(int x, int y)
 	Paint::Pixel newpx = {x, y, 255, 255, 255};
 	this->board.push_back(newpx);
 }
+
+void Paint::Board::SetScale(int scale)
+{
+	if (scale > 0)
+             this->scale = scale;
+
+       else this->scale = 1;
+}
