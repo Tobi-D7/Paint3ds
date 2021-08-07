@@ -26,7 +26,7 @@ void Paint::Board::Draw()
 
 void Paint::Board::DrawDot(int x, int y)
 {
-	Paint::Pixel newpx = {x, y, 255, 255, 255};
+	Paint::Pixel newpx = {x * this->scale, y * this->scale, 255, 255, 255};
 	this->board.push_back(newpx);
 }
 
