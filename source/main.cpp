@@ -2,6 +2,8 @@
 
 #include "Board.hpp"
 
+int size = 1;
+
 int main()
 {
     RenderD7::Init::Main();
@@ -11,6 +13,10 @@ int main()
     while(RenderD7::MainLoop())
     {
         touchPosition t;
+        if (d7_hDown & KEY_UP) size ++;
+        if ((size > 1 && d7_hDown & KEY_DOWN)) size --;
+        
+        board.SetScale(size);
         hidTouchRead(&t);
         board.DrawDot(t.px, t.py);
         RenderD7::OnScreen(Bottom);
