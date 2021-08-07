@@ -1,6 +1,6 @@
 #pragma once
 // Formats
-#imclude "bmp.hpp"
+#include "bmp.hpp"
 
 enum Expformat
 {
