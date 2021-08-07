@@ -18,7 +18,9 @@ namespace Paint
         ~Board();
         void Draw();
         void DrawDot(int x, int y);
+        void SetScale(int scale);
         private:
+        int scale = 1;
         bool ce = true;
         std::vector<Pixel> board;
     };
