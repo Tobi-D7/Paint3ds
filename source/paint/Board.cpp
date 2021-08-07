@@ -26,8 +26,16 @@ void Paint::Board::Draw()
 
 void Paint::Board::DrawDot(int x, int y)
 {
-	Paint::Pixel newpx = {x * this->scale, y * this->scale, 255, 255, 255};
-	this->board.push_back(newpx);
+	//Paint::Pixel newpx = {x * this->scale, y * this->scale, 255, 255, 255};
+	//this->board.push_back(newpx);
+        for (int j = x; j < x + this->scale; j++)
+        {
+           for (int k = y; k < y + this->scale; k++)
+           {
+               pxn = {j, k, 255, 255, 255};
+               this->board.push_back(pxn);
+           }
+       }
 }
 
 void Paint::Board::SetScale(int scale)
