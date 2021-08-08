@@ -15,7 +15,7 @@ int main()
         touchPosition t;
         if (d7_hDown & KEY_UP) size ++;
         if ((size > 1 && d7_hDown & KEY_DOWN)) size --;
-        
+        if (d7_hDown & KEY_START) RenderD7::ExitApp();
         board.SetScale(size);
         hidTouchRead(&t);
         board.DrawDot(t.px, t.py);
