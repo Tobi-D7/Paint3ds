@@ -16,9 +16,10 @@ int main()
         if (d7_hDown & KEY_UP) size ++;
         if ((size > 1 && d7_hDown & KEY_DOWN)) size --;
         if (d7_hDown & KEY_START) RenderD7::ExitApp();
+        
         board.SetScale(size);
         hidTouchRead(&t);
-        board.DrawDot(t.px, t.py);
+        if ((t.px > 5 && t.py > 5)) board.DrawDot(t.px, t.py);
         RenderD7::OnScreen(Bottom);
         board.Draw();
         RenderD7::OnScreen(Top);
