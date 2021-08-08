@@ -1,6 +1,6 @@
 BasicInfo:
-  Title                   : "PAINT"
-  ProductCode             : "CTR-H-PNTC"
+  Title                   : "BCSTM"
+  ProductCode             : "CTR-H-BCST"
   Logo                    : Homebrew # Nintendo / Licensed / Distributed / iQue / iQueForSystem
 
 RomFs:
@@ -8,7 +8,7 @@ RomFs:
 
 TitleInfo:
   Category                : Application
-  UniqueId                : 0x78958
+  UniqueId                : 0x78933
 
 Option:
   UseOnSD                 : true # true if App is to be installed to SD

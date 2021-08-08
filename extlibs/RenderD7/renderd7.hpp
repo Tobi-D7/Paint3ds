@@ -40,6 +40,15 @@ extern std::string dspststus;
 /// RenderD7
 namespace RenderD7
 {
+    enum kbd{
+         SWKBD,
+         BKBD
+    };
+    enum kbd_type
+    {
+         NUMPAD,
+         STANDARD
+    }
     /// Set current RenderScreen
     /// \param target The RenderTarget Top, Bottom
     void OnScreen(C3D_RenderTarget *target);
@@ -120,6 +129,7 @@ namespace RenderD7
         static void doLogic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch);
         static void HandleOvl();
     };
+
     namespace Color
     {
         u32 Hex(const std::string color, u8 a = 255);
