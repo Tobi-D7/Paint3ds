@@ -19,6 +19,7 @@ namespace Paint
         void Draw();
         void DrawDot(int x, int y);
         void SetScale(int scale);
+        int D_VectorSize(){ return (int)this->board.size(); }
         private:
         int scale = 1;
         bool ce = true;
