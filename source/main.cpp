@@ -27,9 +27,9 @@ int main()
         RenderD7::DrawText(0, 30, 0.7f, C2D_Color32(255, 255, 255, 255), std::to_string(board.D_VectorSize()) + "/" + std::to_string((int)v.max_size()));
         for (int i = 0; i < 255; i++)
         {
-             RenderD7::DrawRect(i, 55, i, 20, C2D_Color32((u8)i, 0, 0, 255));
-             RenderD7::DrawRect(i, 85, i, 20, C2D_Color32(0, (u8)i, 0, 255));
-             RenderD7::DrawRect(i, 115, i, 20, C2D_Color32(0, 0, (u8)i, 255));
+             RenderD7::DrawRect(i, 55, 1, 20, C2D_Color32((u8)i, 0, 0, 255));
+             RenderD7::DrawRect(i, 85, 1, 20, C2D_Color32(0, (u8)i, 0, 255));
+             RenderD7::DrawRect(i, 115, 1, 20, C2D_Color32(0, 0, (u8)i, 255));
         }
         C3D_FrameEnd(0);
     }
