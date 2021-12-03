@@ -8,6 +8,7 @@ int main()
 {
     RenderD7::Init::Main("Paint-3ds");
     Paint::Board board(48, 48);
+    board.setScale(2);
     std::vector<int> v;
     
     while(RenderD7::MainLoop())
