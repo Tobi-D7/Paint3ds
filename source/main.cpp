@@ -6,7 +6,7 @@ int size = 1;
 
 int main()
 {
-    RenderD7::Init::Main();
+    RenderD7::Init::Main("Paint-3ds");
     Paint::Board board(48, 48);
     std::vector<int> v;
     
