@@ -5,6 +5,7 @@ namespace Paint
 {
     struct Pixel
     {
+        bool drawn = false;
         int x;
         int y;
         u8 r;
