@@ -21,6 +21,7 @@
 #include "parameter.hpp"
 #include "thread.hpp"
 #include "ini.hpp"
+#include "stringtool.hpp"
 
 #define RENDERD7VSTRING "0.6.10"
 #define CHANGELOG "0.6.10: rewrite Threadsystem, Improve framerate/n0.6.02: Fix Code in lang.hpp\nadd Draw Text Left Function.\nadd changelog\n0.6.01: add Threading system."
@@ -122,16 +123,27 @@ namespace RenderD7
     	virtual ~Scene() {}
     	virtual void Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch) = 0;
     	virtual void Draw() const = 0;
-        virtual void Ovl() const = 0;
+        //virtual void Ovl() const = 0;
         static void Load(std::unique_ptr<Scene> scene);
         static void Back();
         static void doDraw();
         static void doLogic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch);
-        static void HandleOvl();
+        //static void HandleOvl();
     };
 
     namespace Color
     {
+        struct rgba
+        {
+            u8 r, g, b, a;
+        };
+        class RGBA{
+            public:
+            RGBA(u8 r, u8 g, u8 b, u8 a) : m_r(r),m_g(g),m_b(b),m_a(a){}
+            uint32_t Color::toRGBA() const {return (r << 24) | (g << 16) | (b << 8) | a;}
+            
+            u8 m_r, m_g ,m_b, m_a;
+        };
         u32 Hex(const std::string color, u8 a = 255);
     }
     void DrawMetrikOvl();
@@ -143,7 +155,7 @@ namespace RenderD7
     }
     namespace Init
     {
-        Result Main();
+        Result Main(std::string app_name = "RD7Game");
         void NdspFirm(bool useit = false);
     }
     namespace Exit
@@ -160,6 +172,7 @@ namespace RenderD7
     namespace Convert
     {
         inline float StringtoFloat(std::string inp){return std::atof(inp.c_str());}
+        inline int StringtoInt(std::string inp){return std::atoi(inp.c_str());}
         inline bool FloatToBool(float inp){if(inp == 1)return true; else return false;}
     }
     namespace FS
@@ -214,6 +227,14 @@ namespace RenderD7
         float txtsize = 0.7f;  //Set Text Size
     };
 
+    struct TLBtn
+    {
+        int x; //Position X
+        int y; //Position Y
+        int w; //Button Width
+        int h; //Button Height
+    };
+
     struct ScrollList1 
     {
         std::string Text = "";
@@ -236,15 +257,38 @@ namespace RenderD7
     void DrawTObjects(std::vector<RenderD7::TObject> tobjects, u32 color, u32 txtcolor,  int selection = -1, u32 selbgcolor = RenderD7::Color::Hex("#2D98AF"), u32 selcolor = RenderD7::Color::Hex("#000000"));
     void DrawSTObject(std::vector<RenderD7::TObject> tobject, int tobjectindex, u32 color, u32 txtcolor);
     bool touchTObj(touchPosition touch, RenderD7::TObject button);
-    
+    void DrawTLBtns(std::vector<RenderD7::TLBtn> btns, u32 color,  int selection = -1, u32 selbgcolor = RenderD7::Color::Hex("#2D98AF"), u32 selcolor = RenderD7::Color::Hex("#000000"));
     struct DirContent
     {
         std::string name;
         std::string path;
         bool isDir;
     };
+    
+    /*class Console
+    {
+         public:
+           Console();
+           Console(int x, int y, int w, int h, int a = 255);
+           Console(int x, int y, int w, int h, RenderD7::rgba col);
+           Console(int x, int y, int w, int h, std::string name, RenderD7::rgba col = {255, 255, 255, 255}, RenderD7::rgba barcol = {0, 0, 0, 255}, RenderD7::rgba outlinecol = {222, 222, 222, 255});
+           void On(C3D_RenderTarget *t_cscreen);
+           bool Update();
+           ~Console();
+         private:
+           std::vector<std::string> m_lines;
+           int x, y, w, h;
+           std::string m_name = "";
+           C3D_RenderTarget *cscreen;
+           bool m_nconsole = false;
+           bool m_mconsole = false;
+           RenderD7::rgba color = {255, 255, 255, 255};
+           RenderD7::rgba outlinecol = {222, 222, 222, 255};
+           RenderD7::rgba barcolor = {0, 0, 0, 255};
+    };*/
 
     bool NameIsEndingWith(const std::string &name, const std::vector<std::string> &extensions);
     void GetDirContentsExt(std::vector<RenderD7::DirContent> &dircontent, const std::vector<std::string> &extensions);
     void GetDirContents(std::vector<RenderD7::DirContent> &dircontent);
+
 } /// RenderD7
