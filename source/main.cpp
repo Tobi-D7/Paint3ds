@@ -14,7 +14,7 @@ int main()
     //Init with patched value. To patch you need to call the cobj___ before init!
     RenderD7::Init::Main("Paint-3ds");
     Paint::Board board(48, 48);
-    board.setScale(2);
+    board.SetScale(2);
     std::vector<int> v;
     
     while(RenderD7::MainLoop())
