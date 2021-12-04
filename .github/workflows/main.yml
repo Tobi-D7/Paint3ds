@@ -54,11 +54,11 @@ jobs:
           echo ::set-output name=committer_name::$(git log -1 "$GITHUB_SHA" --pretty="%cN")
           echo ::set-output name=commit_subject::$(git log -1 "$GITHUB_SHA" --pretty="%s")
           echo ::set-output name=commit_message::$(git log -1 "$GITHUB_SHA" --pretty="%b")
-     # - name: Publish build to GH Actions
-       # uses: actions/upload-artifact@v2
-      #  with:
-          #path: ~/artifacts/*
-         # name: build
+      - name: Publish build to GH Actions
+        uses: actions/upload-artifact@v2
+        with:
+          path: ~/artifacts/*
+          name: build
 
   # Only run this for non-PR jobs.
   publish_build:
