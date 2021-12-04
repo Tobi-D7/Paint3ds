@@ -2,10 +2,16 @@
 
 #include "Board.hpp"
 
+//hack renderd7 max obj limit;
+extern int cobj___;
+
 int size = 1;
 
 int main()
 {
+    //hack renderd7 max obj limit;
+    cobj___ = 100000;
+    //Init with patched value. To patch you need to call the cobj___ before init!
     RenderD7::Init::Main("Paint-3ds");
     Paint::Board board(48, 48);
     board.setScale(2);
