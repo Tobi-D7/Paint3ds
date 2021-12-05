@@ -839,7 +839,7 @@ void RenderD7::DrawMetrikOvl()
         //RenderD7::DrawText(0, 70, mt_txtSize, mt_txtcolor, "GPU: " + std::to_string(C3D_GetDrawingTime()*6.0f) + "/" + std::to_string(C3D_GetDrawingTime()));
         for (int z = 0; z < 320; z++)
         {
-             C2D_DrawLine(z, 239 - mt_framegraph[z], mt_txtcolor, z + 1, 239 - mt_framegraph[z + 1], mt_txtcolor, 1, 1);
+             C2D_DrawLine(z, 239 - mt_fpsgraph[z], mt_txtcolor, z + 1, 239 - mt_fpsgraph[z + 1], mt_txtcolor, 1, 1);
         }
 }
 
