@@ -10,10 +10,10 @@ int size = 1;
 int main()
 {
     //hack renderd7 max obj limit;
-    cobj___ = 10000;
+    cobj___ = 5000;
     //Init with patched value. To patch you need to call the cobj___ before init!
     RenderD7::Init::Main("Paint-3ds");
-    Paint::Board board(100, 100);
+    Paint::Board board(48, 48);
     
     std::vector<int> v;
     
@@ -40,8 +40,8 @@ int main()
              RenderD7::DrawRect(i, 85, 1, 20, C2D_Color32(0, (u8)i, 0, 255));
              RenderD7::DrawRect(i, 115, 1, 20, C2D_Color32(0, 0, (u8)i, 255));
         }
-        RenderD7::DrawMetrikOvl();
-        C3D_FrameEnd(0);
+        //RenderD7::DrawMetrikOvl();
+        RenderD7::FrameEnd();
     }
     RenderD7::Exit::Main();
 }
