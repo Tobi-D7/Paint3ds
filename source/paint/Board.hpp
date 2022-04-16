@@ -21,6 +21,7 @@ namespace Paint
         void DrawDot(int x, int y);
         void SetScale(int scale);
         int D_VectorSize(){ return (int)this->board.size(); }
+        inline std::vector<Pixel> GetBoard() { return this->board; }
         private:
         int scale = 1;
         bool ce = true;

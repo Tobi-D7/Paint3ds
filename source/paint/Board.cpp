@@ -1,4 +1,5 @@
 #include "Board.hpp"
+#include "stb_image_write.h"
 
 Paint::Pixel px;
 
@@ -8,7 +9,7 @@ Paint::Board::Board(int w, int h, bool centered)
     {
         for (int y = 0; y < h; y++)
         {
-            px = {x, y, (u8)x, (u8)y, (u8)y};
+            px = {false, x, y, (u8)x, (u8)y, (u8)y};
             this->board.push_back(px);
         }
     }
@@ -33,7 +34,7 @@ void Paint::Board::DrawDot(int x, int y)
         {
            for (int k = y; k < y + this->scale; k++)
            {
-               pxn = {j, k, 255, 255, 255};
+               pxn = {false, j, k, 255, 255, 255};
                this->board.push_back(pxn);
            }
        }
@@ -42,7 +43,7 @@ void Paint::Board::DrawDot(int x, int y)
 void Paint::Board::SetScale(int scale)
 {
 	if (scale > 0)
-             this->scale = scale;
+        this->scale = scale;
 
-       else this->scale = 1;
+    else this->scale = 1;
 }

@@ -1,10 +1,5 @@
 #pragma once
 // Formats
-#include "bmp.hpp"
+#include "Board.hpp"
 
-enum Expformat
-{
-     BMP,
-     PNG,
-     JPG
-};
+void Export(std::vector<Paint::Pixel> board, int width, int height);
