@@ -35,7 +35,7 @@ int main()
         RenderD7::DrawText(0, 30, 0.7f, C2D_Color32(255, 255, 255, 255), std::to_string(board.D_VectorSize()) + "/" + std::to_string((int)v.max_size()));
         RenderD7::DrawText(0, 50, 0.7f, C2D_Color32(255, 255, 255, 255), "CPU: " + std::to_string(C3D_GetProcessingTime()*6.0f) + "/" + std::to_string(C3D_GetProcessingTime()));
         RenderD7::DrawText(0, 70, 0.7f, C2D_Color32(255, 255, 255, 255), "GPU: " + std::to_string(C3D_GetDrawingTime()*6.0f) + "/" + std::to_string(C3D_GetDrawingTime()));
-        RenderD7::DrawText(0, 90, 0.7f, C2D_Color32(255, 255, 255, 255), "GPU: " + std::to_string(C3D_GetCmdBufUsage()*100.0f) + "/" + std::to_string(C3D_GetCmdBufUsage()));
+        RenderD7::DrawText(0, 90, 0.7f, C2D_Color32(255, 255, 255, 255), "CMD: " + std::to_string(C3D_GetCmdBufUsage()*100.0f) + "/" + std::to_string(C3D_GetCmdBufUsage()));
         
         //RenderD7::DrawMetrikOvl();
         RenderD7::FrameEnd();
