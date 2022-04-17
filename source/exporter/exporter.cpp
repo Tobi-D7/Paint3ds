@@ -15,4 +15,5 @@ void Export(std::vector<Paint::Pixel> board, int width, int height)
         buffer[index + 3] = ((int)255);
     }
     stbi_write_bmp("sdmc:/file.bmp", width, height, 3, buffer);
+    //stbi_write_jpg("sdmc:/file.jpg", width, height, 3, buffer, 95);
 }
