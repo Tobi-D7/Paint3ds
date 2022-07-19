@@ -1,7 +1,9 @@
 #include "Board.hpp"
-#include "stb_image_write.h"
+#include "exporter.hpp"
+#include "bmp.hpp"
 
 Paint::Pixel px;
+RenderD7::Image tex;
 
 Paint::Board::Board(int w, int h, bool centered)
 {
@@ -13,16 +15,31 @@ Paint::Board::Board(int w, int h, bool centered)
             this->board.push_back(px);
         }
     }
+    this->w = w;
+    this->h = h;
 }
 
 Paint::Board::~Board(){}
 
 void Paint::Board::Draw()
 {
-    for (int i = 0; i < (int)this->board.size(); i++)
-    {
-        if (i < 15000) RenderD7::DrawPx(this->board[i].x, this->board[i].y, C2D_Color32(this->board[i].r, this->board[i].g, this->board[i].b, 255));
+    RenderD7::OnScreen(Bottom);
+    BMP out(w, h, true);
+    for (size_t i = 0; i < board.size(); i++){
+        out.set_pixel(board[i].x, h - board[i].y, board[i].b, board[i].g, board[i].r, 255);
     }
+    out.write("paintout.bmp");
+    std::vector<unsigned char> bmpbuff;
+    lodepng::load_file(bmpbuff, "paintout.bmp");
+    unsigned w, h;
+    std::vector<unsigned char> ImageBuff;
+    decodeBMP(ImageBuff, w, h, bmpbuff);
+    std::vector<unsigned char> png;
+    lodepng::encode(png, ImageBuff, w, h);
+    
+    tex.LoadPFromBuffer(png);
+    tex.Draw(0, 0);
+    tex.Unload();
 }
 
 void Paint::Board::DrawDot(int x, int y)

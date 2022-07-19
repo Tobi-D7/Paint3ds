@@ -25,6 +25,7 @@ namespace Paint
         private:
         int scale = 1;
         bool ce = true;
+        int w, h;
         std::vector<Pixel> board;
     };
 }

@@ -25,6 +25,7 @@ int main()
         if ((size > 1 && d7_hDown & KEY_DOWN)) size --;
         if (d7_hDown & KEY_START) RenderD7::ExitApp();
         if (d7_hDown & KEY_SELECT) Export(board.GetBoard(), 100, 100);
+        if (d7_hDown & KEY_B) RenderD7::LoadSettings();
         board.SetScale(size);
         hidTouchRead(&t);
         if ((t.px > 5 && t.py > 5)) board.DrawDot(t.px, t.py);
