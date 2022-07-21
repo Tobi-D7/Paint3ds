@@ -1,6 +1,7 @@
 #include "Board.hpp"
 #include "exporter.hpp"
 #include "bmp.hpp"
+#include "bmpconverter.hpp"
 
 Paint::Pixel px;
 RenderD7::Image tex;
@@ -28,16 +29,8 @@ void Paint::Board::Draw()
     for (size_t i = 0; i < board.size(); i++){
         out.set_pixel(board[i].x, h - board[i].y, board[i].b, board[i].g, board[i].r, 255);
     }
-    out.write("paintout.bmp");
-    std::vector<unsigned char> bmpbuff;
-    lodepng::load_file(bmpbuff, "paintout.bmp");
-    unsigned w, h;
-    std::vector<unsigned char> ImageBuff;
-    decodeBMP(ImageBuff, w, h, bmpbuff);
-    std::vector<unsigned char> png;
-    lodepng::encode(png, ImageBuff, w, h);
     
-    tex.LoadPFromBuffer(png);
+    tex.LoadPFromBuffer(ConvertData(out.DATA()));
     tex.Draw(0, 0);
     tex.Unload();
 }
