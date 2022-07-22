@@ -2,7 +2,6 @@
 
 #include "Board.hpp"
 
-#include "exporter.hpp"
 //hack renderd7 max obj limit;
 extern int cobj___;
 
@@ -14,7 +13,7 @@ int main()
     cobj___ = 15500; //3ds cant load more objects
     //Init with patched value. To patch you need to call the cobj___ before init!
     RenderD7::Init::Main("Paint-3ds");
-    Paint::Board board(500, 500);
+    Paint::Board board(100, 100);
     
     std::vector<int> v;
     
@@ -29,7 +28,7 @@ int main()
         if (d7_hDown & KEY_B) RenderD7::LoadSettings();
         board.SetScale(sizes);
         hidTouchRead(&t);
-        if ((t.px > 5 && t.py > 5)) board.DrawDot(t.px, t.py);
+        if ((t.px > 5 && t.py > 5)) board.DrawDot(t.px-50, t.py-50);
         RenderD7::OnScreen(Bottom);
         board.Draw();
         RenderD7::OnScreen(Top);

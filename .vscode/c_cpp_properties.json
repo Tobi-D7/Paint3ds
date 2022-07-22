@@ -4,8 +4,8 @@
             "name": "3DS",
             "includePath": [
                 "${workspaceFolder}",
-                "C:/devkitpro/libctru/include/**",
-                "C:/devkitpro/portlibs/3ds/include/**",
+                "/opt/devkitpro/libctru/include/**",
+                "/opt/devkitpro/portlibs/3ds/include/**",
                 "${workspaceFolder}/RenderD7/**",
                 "${workspaceFolder}/**"
             ],

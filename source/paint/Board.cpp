@@ -1,5 +1,4 @@
 #include "Board.hpp"
-#include "exporter.hpp"
 #include "bmp.hpp"
 #include "bmpconverter.hpp"
 
@@ -31,7 +30,8 @@ void Paint::Board::Draw()
     }
     
     tex.LoadPFromBuffer(ConvertData(out.DATA()));
-    tex.Draw(0, 0);
+    //tex.LoadFromBitmap(out);
+    tex.Draw(50, 50);
     tex.Unload();
 }
 
