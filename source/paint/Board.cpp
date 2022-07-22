@@ -31,7 +31,7 @@ void Paint::Board::Draw()
     
     tex.LoadPFromBuffer(ConvertData(out.DATA()));
     //tex.LoadFromBitmap(out);
-    tex.Draw(50, 50);
+    tex.Draw(5, 5);
     tex.Unload();
 }
 
@@ -56,4 +56,18 @@ void Paint::Board::SetScale(int scale)
         this->scale = scale;
 
     else this->scale = 1;
+}
+
+void Paint::Board::Export()
+{
+    BMP out(w, h, true);
+    for (size_t i = 0; i < board.size(); i++){
+        out.set_pixel(board[i].x, h - board[i].y, board[i].b, board[i].g, board[i].r, 255);
+    }
+    std::string name = RenderD7::Kbd(15, SwkbdType::SWKBD_TYPE_NORMAL).c_str();
+    if(!RenderD7::NameIsEndingWith(name, {"bmp"}))
+    {
+        name += ".bmp";
+    }
+    out.write(name.c_str());
 }
